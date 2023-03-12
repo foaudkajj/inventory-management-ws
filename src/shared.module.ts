@@ -6,13 +6,16 @@ import {ColorService} from './endpoints/color/color.service';
 import { CurrencyController } from './endpoints/currency/currency.controller';
 import { CurrencyRepository } from './endpoints/currency/Currency.repository';
 import { CurrencyService } from './endpoints/currency/Currency.service';
-import {Color, Currency} from './models';
+import { Customer_infoController } from './endpoints/customer_info/customer_info.controller';
+import { Customer_infoRepository } from './endpoints/customer_info/customer_info.repository';
+import { Customer_infoService } from './endpoints/customer_info/customer_info.service';
+import {Color, Currency, Customer_info} from './models';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Color,Currency])],
-  controllers: [ColorController,CurrencyController],
-  providers: [ColorService, ColorRepository,CurrencyRepository,CurrencyService],
-  exports: [ColorService, ColorRepository,CurrencyRepository,CurrencyService],
+  imports: [TypeOrmModule.forFeature([Color,Currency,Customer_info])],
+  controllers: [ColorController,CurrencyController,Customer_infoController],
+  providers: [ColorService, ColorRepository,CurrencyRepository,CurrencyService,Customer_infoService,Customer_infoRepository],
+  exports: [ColorService, ColorRepository,CurrencyRepository,CurrencyService,Customer_infoService,Customer_infoRepository],
 })
 /**
  * This module contains only system wide used services (like repositories)
