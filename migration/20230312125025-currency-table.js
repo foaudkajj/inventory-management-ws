@@ -1,6 +1,6 @@
 const { MigrationInterface, QueryRunner } = require("typeorm");
 
-module.exports = class currencyTable20230312125025 {
+module.exports = class CurrencyTable20230312125025 {
 
     async up(queryRunner) {
         await queryRunner.query(

@@ -3,7 +3,7 @@ import {ApiParam} from '@nestjs/swagger';
 import {Currency} from 'src/models';
 import {CurrencyService} from './Currency.service';
 
-@Controller('api/Currencys')
+@Controller('api/Currencies')
 export class CurrencyController {
   constructor(private readonly CurrencyService: CurrencyService) {}
 
