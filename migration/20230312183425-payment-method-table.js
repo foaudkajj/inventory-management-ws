@@ -1,14 +1,13 @@
 const { MigrationInterface, QueryRunner } = require("typeorm");
 
-module.exports = class ColorTable20230311211800 {
+module.exports = class PaymentMethodTable20230312183425 {
 
     async up(queryRunner) {
         await queryRunner.query(
             `
-        create table \`color\` (
+        create table \`payment_method\` (
             \`id\` char(36) not null,
-            \`name\` varchar(50) not null,
-            \`code\` varchar(30)  null
+            \`name\` varchar(50) not null
           ) Engine=InnoDB;
           `,
         );
@@ -16,8 +15,9 @@ module.exports = class ColorTable20230311211800 {
 
     async down(queryRunner) {
         await queryRunner.query(
-            `drop table \`color\`;`,
+            `drop table \`payment_method\`;`,
           );
     }
+    
 
 }
