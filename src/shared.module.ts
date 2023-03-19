@@ -1,3 +1,7 @@
+import { PaymentMethodService } from './endpoints/payment-method/payment-method.service';
+import { PaymentMethodRepository } from './endpoints/payment-method/payment-method.repository';
+import { PaymentMethodController } from './endpoints/payment-method/payment-method.controller';
+import { PaymentMethod } from './models/payment-method.model';
 import {Module} from '@nestjs/common';
 import {TypeOrmModule} from '@nestjs/typeorm';
 import {ColorController} from './endpoints/color/color.controller';
@@ -9,10 +13,10 @@ import { CurrencyService } from './endpoints/currency/Currency.service';
 import {Color, Currency} from './models';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Color,Currency])],
-  controllers: [ColorController,CurrencyController],
-  providers: [ColorService, ColorRepository,CurrencyRepository,CurrencyService],
-  exports: [ColorService, ColorRepository,CurrencyRepository,CurrencyService],
+  imports: [TypeOrmModule.forFeature([Color,Currency,PaymentMethod])],
+  controllers: [ColorController,CurrencyController,PaymentMethodController],
+  providers: [ColorService, ColorRepository,CurrencyRepository,CurrencyService,PaymentMethodRepository,PaymentMethodService],
+  exports: [ColorService, ColorRepository,CurrencyRepository,CurrencyService,PaymentMethodRepository,PaymentMethodService],
 })
 /**
  * This module contains only system wide used services (like repositories)
