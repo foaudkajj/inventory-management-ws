@@ -1,3 +1,6 @@
+import { MerchantService } from './endpoints/merchant/merchant.service';
+import { MerchantRepository } from './endpoints/merchant/merchant.repository';
+import { MerchantController } from './endpoints/merchant/merchant.controller';
 import { GenericListItemService } from './endpoints/generic-list-item/generic-list-item.service';
 import { GenericListItemRepository } from './endpoints/generic-list-item/generic-list-item.repository';
 import { GenericListService } from './endpoints/generic-list/generic-list.service';
@@ -17,7 +20,7 @@ import { PaymentMethodController } from './endpoints/payment-method/payment-meth
 import { CustomerInfoService } from './endpoints/customer-info/customer-info.service';
 import { CustomerInfoRepository } from './endpoints/customer-info/customer-info.repository';
 import { CustomerInfoController } from './endpoints/customer-info/customer-info.controller';
-import { CustomerInfo, GenericList, GenericListItem, PaymentMethod } from 'src/models';
+import { CustomerInfo, GenericList, GenericListItem, Merchant, PaymentMethod } from 'src/models';
 import {Module} from '@nestjs/common';
 import {TypeOrmModule} from '@nestjs/typeorm';
 import {ColorController} from './endpoints/color/color.controller';
@@ -30,15 +33,17 @@ import {Color, Currency} from './models';
 import { GenericListItemController } from './endpoints/generic-list-item/generic-list-item.controller';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Color,Currency,CustomerInfo,PaymentMethod,Country,City,GenericList,GenericListItem])],
+  imports: [TypeOrmModule.forFeature([Color,Currency,CustomerInfo,PaymentMethod,Country,City,GenericList,GenericListItem,Merchant])],
   controllers: [ColorController,CurrencyController,CustomerInfoController,PaymentMethodController,
-    CountryController,CityController,GenericListController,GenericListItemController],
+    CountryController,CityController,GenericListController,GenericListItemController,MerchantController],
   providers: [ColorService, ColorRepository,CurrencyRepository,CurrencyService,CustomerInfoRepository,
     CustomerInfoService,PaymentMethodRepository,PaymentMethodService,CountryRepository,CountryService,
-    CityRepository,CityService,GenericListRepository,GenericListService,GenericListItemRepository,GenericListItemService],
+    CityRepository,CityService,GenericListRepository,GenericListService,GenericListItemRepository,GenericListItemService
+    ,MerchantRepository,MerchantService],
   exports: [ColorService, ColorRepository,CurrencyRepository,CurrencyService,CustomerInfoRepository,
     CustomerInfoService,PaymentMethodRepository,PaymentMethodService,CountryRepository,CountryService,
-    CityRepository,CityService,GenericListRepository,GenericListService,GenericListItemRepository,GenericListItemService],
+    CityRepository,CityService,GenericListRepository,GenericListService,GenericListItemRepository,GenericListItemService
+    ,MerchantRepository,MerchantService],
 })
 /**
  * This module contains only system wide used services (like repositories)
