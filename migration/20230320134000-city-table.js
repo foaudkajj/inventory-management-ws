@@ -1,14 +1,18 @@
 const { MigrationInterface, QueryRunner } = require("typeorm");
 
-module.exports = class CountryTable20230320130000 {
+module.exports = class CityTable20230320134000 {
 
     async up(queryRunner) {
         await queryRunner.query(
             `
-        create table \`country\` (
+        create table \`city\` (
             \`id\` char(36) not null,
             \`name\` varchar(50) not null,
-            PRIMARY KEY (id)
+            \`country_id\` char(36) not null,
+            PRIMARY KEY (id),
+            FOREIGN KEY (country_id) REFERENCES country(id)
+            ON DELETE CASCADE
+            ON UPDATE CASCADE
           ) Engine=InnoDB;
           `,
         );
@@ -16,9 +20,9 @@ module.exports = class CountryTable20230320130000 {
 
     async down(queryRunner) {
         await queryRunner.query(
-            `drop table \`country\`;
+            `drop table \`city\`;
+            DROP FOREIGN KEY country_id;
             `,
-            
           );
     }
 
