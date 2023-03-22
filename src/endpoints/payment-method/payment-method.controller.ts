@@ -5,27 +5,27 @@ import {PaymentMethodService} from './payment-method.service';
 
 @Controller('api/PaymentMethods')
 export class PaymentMethodController {
-  constructor(private readonly PaymentMethodService: PaymentMethodService) {}
+  constructor(private readonly paymentMethodService: PaymentMethodService) {}
 
   @Get('get')
   getAll(): Promise<PaymentMethod[]> {
-    return this.PaymentMethodService.getAll();
+    return this.paymentMethodService.getAll();
   }
 
   @Post('insert')
   insert(@Body() row: PaymentMethod) {
-    return this.PaymentMethodService.insert(row);
+    return this.paymentMethodService.insert(row);
   }
 
   @Put('update/:id')
   @ApiParam({name: 'id'})
   update(@Body() row: PaymentMethod, @Param('id') id: string) {
-    return this.PaymentMethodService.update(row, id);
+    return this.paymentMethodService.update(row, id);
   }
 
   @Delete('delete/:id')
   @ApiParam({name: 'id'})
   delete(@Param('id') id: string) {
-    return this.PaymentMethodService.delete(id);
+    return this.paymentMethodService.delete(id);
   }
 }

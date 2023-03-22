@@ -5,27 +5,27 @@ import {MerchantService} from './merchant.service';
 
 @Controller('api/Merchants')
 export class MerchantController {
-  constructor(private readonly MerchantService: MerchantService) {}
+  constructor(private readonly merchantService: MerchantService) {}
 
   @Get('get')
   getAll(): Promise<Merchant[]> {
-    return this.MerchantService.getAll();
+    return this.merchantService.getAll();
   }
 
   @Post('insert')
   insert(@Body() row: Merchant) {
-    return this.MerchantService.insert(row);
+    return this.merchantService.insert(row);
   }
 
   @Put('update/:id')
   @ApiParam({name: 'id'})
   update(@Body() row: Merchant, @Param('id') id: string) {
-    return this.MerchantService.update(row, id);
+    return this.merchantService.update(row, id);
   }
 
   @Delete('delete/:id')
   @ApiParam({name: 'id'})
   delete(@Param('id') id: string) {
-    return this.MerchantService.delete(id);
+    return this.merchantService.delete(id);
   }
 }

@@ -5,27 +5,27 @@ import {CurrencyService} from './Currency.service';
 
 @Controller('api/Currencies')
 export class CurrencyController {
-  constructor(private readonly CurrencyService: CurrencyService) {}
+  constructor(private readonly currencyService: CurrencyService) {}
 
   @Get('get')
   getAll(): Promise<Currency[]> {
-    return this.CurrencyService.getAll();
+    return this.currencyService.getAll();
   }
 
   @Post('insert')
   insert(@Body() row: Currency) {
-    return this.CurrencyService.insert(row);
+    return this.currencyService.insert(row);
   }
 
   @Put('update/:id')
   @ApiParam({name: 'id'})
   update(@Body() row: Currency, @Param('id') id: string) {
-    return this.CurrencyService.update(row, id);
+    return this.currencyService.update(row, id);
   }
 
   @Delete('delete/:id')
   @ApiParam({name: 'id'})
   delete(@Param('id') id: string) {
-    return this.CurrencyService.delete(id);
+    return this.currencyService.delete(id);
   }
 }

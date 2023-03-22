@@ -5,27 +5,27 @@ import {GenericListService} from './generic-list.service';
 
 @Controller('api/GenericLists')
 export class GenericListController {
-  constructor(private readonly GenericListService: GenericListService) {}
+  constructor(private readonly genericListService: GenericListService) {}
 
   @Get('get')
   getAll(): Promise<GenericList[]> {
-    return this.GenericListService.getAll();
+    return this.genericListService.getAll();
   }
 
   @Post('insert')
   insert(@Body() row: GenericList) {
-    return this.GenericListService.insert(row);
+    return this.genericListService.insert(row);
   }
 
   @Put('update/:id')
   @ApiParam({name: 'id'})
   update(@Body() row: GenericList, @Param('id') id: string) {
-    return this.GenericListService.update(row, id);
+    return this.genericListService.update(row, id);
   }
 
   @Delete('delete/:id')
   @ApiParam({name: 'id'})
   delete(@Param('id') id: string) {
-    return this.GenericListService.delete(id);
+    return this.genericListService.delete(id);
   }
 }
