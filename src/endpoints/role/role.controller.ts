@@ -5,27 +5,27 @@ import {RoleService} from './role.service';
 
 @Controller('api/Roles')
 export class RoleController {
-  constructor(private readonly RoleService: RoleService) {}
+  constructor(private readonly roleService: RoleService) {}
 
   @Get('get')
   getAll(): Promise<Role[]> {
-    return this.RoleService.getAll();
+    return this.roleService.getAll();
   }
 
   @Post('insert')
   insert(@Body() row: Role) {
-    return this.RoleService.insert(row);
+    return this.roleService.insert(row);
   }
 
   @Put('update/:id')
   @ApiParam({name: 'id'})
   update(@Body() row: Role, @Param('id') id: string) {
-    return this.RoleService.update(row, id);
+    return this.roleService.update(row, id);
   }
 
   @Delete('delete/:id')
   @ApiParam({name: 'id'})
   delete(@Param('id') id: string) {
-    return this.RoleService.delete(id);
+    return this.roleService.delete(id);
   }
 }

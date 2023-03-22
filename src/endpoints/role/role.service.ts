@@ -4,20 +4,20 @@ import {RoleRepository} from './role.repository';
 
 @Injectable()
 export class RoleService {
-  constructor(private RoleRepository: RoleRepository) {}
+  constructor(private roleRepository: RoleRepository) {}
   getAll(): Promise<Role[]> {
-    return this.RoleRepository.orm.find();
+    return this.roleRepository.orm.find();
   }
 
   insert(row: Role) {
-    return this.RoleRepository.orm.insert(row);
+    return this.roleRepository.orm.insert(row);
   }
 
   update(row: Partial<Role>, id: string) {
-    return this.RoleRepository.orm.update({id: id}, row);
+    return this.roleRepository.orm.update({id: id}, row);
   }
 
   delete(id: string) {
-    return this.RoleRepository.orm.delete({id: id});
+    return this.roleRepository.orm.delete({id: id});
   }
 }
