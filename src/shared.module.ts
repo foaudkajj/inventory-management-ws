@@ -1,3 +1,6 @@
+import { RoleService } from './endpoints/role/role.service';
+import { RoleRepository } from './endpoints/role/role.repository';
+import { RoleController } from './endpoints/role/role.controller';
 import { MerchantService } from './endpoints/merchant/merchant.service';
 import { MerchantRepository } from './endpoints/merchant/merchant.repository';
 import { MerchantController } from './endpoints/merchant/merchant.controller';
@@ -31,19 +34,21 @@ import { CurrencyRepository } from './endpoints/currency/Currency.repository';
 import { CurrencyService } from './endpoints/currency/Currency.service';
 import {Color, Currency} from './models';
 import { GenericListItemController } from './endpoints/generic-list-item/generic-list-item.controller';
+import { Role } from './models/role.model';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Color,Currency,CustomerInfo,PaymentMethod,Country,City,GenericList,GenericListItem,Merchant])],
+  imports: [TypeOrmModule.forFeature([Color,Currency,CustomerInfo,PaymentMethod,Country,City,GenericList,GenericListItem,Merchant
+  ,Role])],
   controllers: [ColorController,CurrencyController,CustomerInfoController,PaymentMethodController,
-    CountryController,CityController,GenericListController,GenericListItemController,MerchantController],
+    CountryController,CityController,GenericListController,GenericListItemController,MerchantController,RoleController],
   providers: [ColorService, ColorRepository,CurrencyRepository,CurrencyService,CustomerInfoRepository,
     CustomerInfoService,PaymentMethodRepository,PaymentMethodService,CountryRepository,CountryService,
     CityRepository,CityService,GenericListRepository,GenericListService,GenericListItemRepository,GenericListItemService
-    ,MerchantRepository,MerchantService],
+    ,MerchantRepository,MerchantService,RoleRepository,RoleService],
   exports: [ColorService, ColorRepository,CurrencyRepository,CurrencyService,CustomerInfoRepository,
     CustomerInfoService,PaymentMethodRepository,PaymentMethodService,CountryRepository,CountryService,
     CityRepository,CityService,GenericListRepository,GenericListService,GenericListItemRepository,GenericListItemService
-    ,MerchantRepository,MerchantService],
+    ,MerchantRepository,MerchantService,RoleRepository,RoleService],
 })
 /**
  * This module contains only system wide used services (like repositories)
