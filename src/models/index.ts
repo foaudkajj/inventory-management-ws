@@ -8,3 +8,4 @@ export * from './generic-list.model';
 export * from './generic-list-item.model';
 export * from './merchant.model';
 export * from './role.model';
+export * from './branch.model';
