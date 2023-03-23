@@ -28,11 +28,7 @@ module.exports = class BranchTable20230323152100 {
 
     async down(queryRunner) {
         await queryRunner.query(
-            `drop table \`branch\`;
-            DROP FOREIGN KEY city_id;
-            DROP FOREIGN KEY country_id;
-            DROP FOREIGN KEY merchant_id;
-            `,
+            `drop table \`branch\`;`,
           );
     }
 
