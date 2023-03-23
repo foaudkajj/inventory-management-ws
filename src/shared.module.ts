@@ -1,3 +1,7 @@
+import { CityService } from './endpoints/city/city.service';
+import { CityRepository } from './endpoints/city/city.repository';
+import { CityController } from './endpoints/city/city.controller';
+import { City } from './models/city.model';
 import { CountryService } from './endpoints/country/country.service';
 import { CountryRepository } from './endpoints/country/country.repository';
 import { CountryController } from './endpoints/country/country.controller';
@@ -20,10 +24,10 @@ import { CurrencyService } from './endpoints/currency/Currency.service';
 import {Color, Currency} from './models';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Color,Currency,CustomerInfo,PaymentMethod,Country])],
-  controllers: [ColorController,CurrencyController,CustomerInfoController,PaymentMethodController,CountryController],
-  providers: [ColorService, ColorRepository,CurrencyRepository,CurrencyService,CustomerInfoRepository,CustomerInfoService,PaymentMethodRepository,PaymentMethodService,CountryRepository,CountryService],
-  exports: [ColorService, ColorRepository,CurrencyRepository,CurrencyService,CustomerInfoRepository,CustomerInfoService,PaymentMethodRepository,PaymentMethodService,CountryRepository,CountryService],
+  imports: [TypeOrmModule.forFeature([Color,Currency,CustomerInfo,PaymentMethod,Country,City])],
+  controllers: [ColorController,CurrencyController,CustomerInfoController,PaymentMethodController,CountryController,CityController],
+  providers: [ColorService, ColorRepository,CurrencyRepository,CurrencyService,CustomerInfoRepository,CustomerInfoService,PaymentMethodRepository,PaymentMethodService,CountryRepository,CountryService,CityRepository,CityService],
+  exports: [ColorService, ColorRepository,CurrencyRepository,CurrencyService,CustomerInfoRepository,CustomerInfoService,PaymentMethodRepository,PaymentMethodService,CountryRepository,CountryService,CityRepository,CityService],
 })
 /**
  * This module contains only system wide used services (like repositories)
