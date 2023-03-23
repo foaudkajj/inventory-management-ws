@@ -4,20 +4,20 @@ import {GenericListItemRepository} from './generic-list-item.repository';
 
 @Injectable()
 export class GenericListItemService {
-  constructor(private GenericListItemRepository: GenericListItemRepository) {}
+  constructor(private genericListItemRepository: GenericListItemRepository) {}
   getAll(): Promise<GenericListItem[]> {
-    return this.GenericListItemRepository.orm.find();
+    return this.genericListItemRepository.orm.find();
   }
 
   insert(row: GenericListItem) {
-    return this.GenericListItemRepository.orm.insert(row);
+    return this.genericListItemRepository.orm.insert(row);
   }
 
   update(row: Partial<GenericListItem>, id: string) {
-    return this.GenericListItemRepository.orm.update({id: id}, row);
+    return this.genericListItemRepository.orm.update({id: id}, row);
   }
 
   delete(id: string) {
-    return this.GenericListItemRepository.orm.delete({id: id});
+    return this.genericListItemRepository.orm.delete({id: id});
   }
 }

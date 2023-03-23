@@ -5,27 +5,27 @@ import {CountryService} from './country.service';
 
 @Controller('api/Countries')
 export class CountryController {
-  constructor(private readonly CountryService: CountryService) {}
+  constructor(private readonly countryService: CountryService) {}
 
   @Get('get')
   getAll(): Promise<Country[]> {
-    return this.CountryService.getAll();
+    return this.countryService.getAll();
   }
 
   @Post('insert')
   insert(@Body() row: Country) {
-    return this.CountryService.insert(row);
+    return this.countryService.insert(row);
   }
 
   @Put('update/:id')
   @ApiParam({name: 'id'})
   update(@Body() row: Country, @Param('id') id: string) {
-    return this.CountryService.update(row, id);
+    return this.countryService.update(row, id);
   }
 
   @Delete('delete/:id')
   @ApiParam({name: 'id'})
   delete(@Param('id') id: string) {
-    return this.CountryService.delete(id);
+    return this.countryService.delete(id);
   }
 }

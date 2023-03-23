@@ -1,6 +1,5 @@
 import {ApiProperty} from '@nestjs/swagger';
 import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from 'typeorm';
-import { City } from './city.model';
 
 @Entity()
 export class Country {

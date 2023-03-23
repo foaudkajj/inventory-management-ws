@@ -4,20 +4,20 @@ import {CountryRepository} from './country.repository';
 
 @Injectable()
 export class CountryService {
-  constructor(private CountryRepository: CountryRepository) {}
+  constructor(private countryRepository: CountryRepository) {}
   getAll(): Promise<Country[]> {
-    return this.CountryRepository.orm.find();
+    return this.countryRepository.orm.find();
   }
 
   insert(row: Country) {
-    return this.CountryRepository.orm.insert(row);
+    return this.countryRepository.orm.insert(row);
   }
 
   update(row: Partial<Country>, id: string) {
-    return this.CountryRepository.orm.update({id: id}, row);
+    return this.countryRepository.orm.update({id: id}, row);
   }
 
   delete(id: string) {
-    return this.CountryRepository.orm.delete({id: id});
+    return this.countryRepository.orm.delete({id: id});
   }
 }

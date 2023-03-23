@@ -4,20 +4,20 @@ import {CityRepository} from './city.repository';
 
 @Injectable()
 export class CityService {
-  constructor(private CityRepository: CityRepository) {}
+  constructor(private cityRepository: CityRepository) {}
   getAll(): Promise<City[]> {
-    return this.CityRepository.orm.find();
+    return this.cityRepository.orm.find();
   }
 
   insert(row: City) {
-    return this.CityRepository.orm.insert(row);
+    return this.cityRepository.orm.insert(row);
   }
 
   update(row: Partial<City>, id: string) {
-    return this.CityRepository.orm.update({id: id}, row);
+    return this.cityRepository.orm.update({id: id}, row);
   }
 
   delete(id: string) {
-    return this.CityRepository.orm.delete({id: id});
+    return this.cityRepository.orm.delete({id: id});
   }
 }

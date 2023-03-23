@@ -5,27 +5,27 @@ import {CustomerInfoService} from './customer-info.service';
 
 @Controller('api/Customer_infos')
 export class CustomerInfoController {
-  constructor(private readonly Customer_infoService: CustomerInfoService) {}
+  constructor(private readonly customerInfoService: CustomerInfoService) {}
 
   @Get('get')
   getAll(): Promise<CustomerInfo[]> {
-    return this.Customer_infoService.getAll();
+    return this.customerInfoService.getAll();
   }
 
   @Post('insert')
   insert(@Body() row: CustomerInfo) {
-    return this.Customer_infoService.insert(row);
+    return this.customerInfoService.insert(row);
   }
 
   @Put('update/:id')
   @ApiParam({name: 'id'})
   update(@Body() row: CustomerInfo, @Param('id') id: string) {
-    return this.Customer_infoService.update(row, id);
+    return this.customerInfoService.update(row, id);
   }
 
   @Delete('delete/:id')
   @ApiParam({name: 'id'})
   delete(@Param('id') id: string) {
-    return this.Customer_infoService.delete(id);
+    return this.customerInfoService.delete(id);
   }
 }

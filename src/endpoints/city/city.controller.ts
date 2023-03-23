@@ -5,27 +5,27 @@ import {CityService} from './city.service';
 
 @Controller('api/cities')
 export class CityController {
-  constructor(private readonly CityService: CityService) {}
+  constructor(private readonly cityService: CityService) {}
 
   @Get('get')
   getAll(): Promise<City[]> {
-    return this.CityService.getAll();
+    return this.cityService.getAll();
   }
 
   @Post('insert')
   insert(@Body() row: City) {
-    return this.CityService.insert(row);
+    return this.cityService.insert(row);
   }
 
   @Put('update/:id')
   @ApiParam({name: 'id'})
   update(@Body() row: City, @Param('id') id: string) {
-    return this.CityService.update(row, id);
+    return this.cityService.update(row, id);
   }
 
   @Delete('delete/:id')
   @ApiParam({name: 'id'})
   delete(@Param('id') id: string) {
-    return this.CityService.delete(id);
+    return this.cityService.delete(id);
   }
 }

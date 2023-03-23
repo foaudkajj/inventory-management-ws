@@ -17,5 +17,5 @@ export class CustomerInfo {
 
   @Column({length: 50, name: 'accent_insensitive_name'})
   @ApiProperty({required: true, type: 'string'})
-  accent_insensitive_name: string;
+  accentInsensitiveName: string;
 }
