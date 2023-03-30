@@ -1,4 +1,4 @@
-import { UserStatus } from './enum';
+import { UserStatus } from './enums';
 import { Branch, Merchant, Role } from 'src/models';
 import {ApiProperty} from '@nestjs/swagger';
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
