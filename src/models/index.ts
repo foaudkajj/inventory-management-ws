@@ -10,3 +10,4 @@ export * from './merchant.model';
 export * from './role.model';
 export * from './branch.model';
 export * from './user.model';
+export * from './unit.model';
