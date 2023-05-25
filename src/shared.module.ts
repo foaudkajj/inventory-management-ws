@@ -32,7 +32,7 @@ import { PaymentMethodController } from './endpoints/payment-method/payment-meth
 import { CustomerInfoService } from './endpoints/customer-info/customer-info.service';
 import { CustomerInfoRepository } from './endpoints/customer-info/customer-info.repository';
 import { CustomerInfoController } from './endpoints/customer-info/customer-info.controller';
-import { CustomerInfo, GenericList, GenericListItem, Merchant, PaymentMethod, Branch, User, Unit } from 'src/models';
+import { CustomerInfo, GenericList, GenericListItem, Merchant, PaymentMethod, Branch, User, Unit, Sale, Product, SaleProduct, SalePaymentMethod } from 'src/models';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ColorController } from './endpoints/color/color.controller';
@@ -44,20 +44,37 @@ import { CurrencyService } from './endpoints/currency/Currency.service';
 import { Color, Currency } from './models';
 import { GenericListItemController } from './endpoints/generic-list-item/generic-list-item.controller';
 import { Role } from './models/role.model';
+import { SaleController } from './endpoints/sale/sale.controller';
+import { ProductController } from './endpoints/product/product.controller';
+import { SaleRepository } from './endpoints/sale/sale.repository';
+import { SaleService } from './endpoints/sale/sale.service';
+import { ProductRepository } from './endpoints/product/product.repository';
+import { ProductService } from './endpoints/product/product.service';
+import { SaleProductController } from './endpoints/sale-product/sale-product.controller';
+import { SalePaymentMethodController } from './endpoints/sale-payment-method/sale-payment-method.controller';
+import { SaleProductRepository } from './endpoints/sale-product/sale-product.repository';
+import { SaleProductService } from './endpoints/sale-product/sale-product.service';
+import { SalePaymentMethodRepository } from './endpoints/sale-payment-method/sale-payment-method.repository';
+import { SalePaymentMethodService } from './endpoints/sale-payment-method/sale-payment-method.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Color, Currency, CustomerInfo, PaymentMethod, Country, City, GenericList, GenericListItem, Merchant
-    , Role, Branch, User,Unit])],
+    , Role, Branch, User,Unit,Sale,Product,SaleProduct,SalePaymentMethod])],
   controllers: [ColorController, CurrencyController, CustomerInfoController, PaymentMethodController,
-    CountryController, CityController, GenericListController, GenericListItemController, MerchantController, RoleController, BranchController, UserController,UnitController],
+    CountryController, CityController, GenericListController, GenericListItemController, MerchantController, RoleController, 
+    BranchController, UserController,UnitController,SaleController,ProductController,SaleProductController,SalePaymentMethodController],
   providers: [ColorService, ColorRepository, CurrencyRepository, CurrencyService, CustomerInfoRepository,
     CustomerInfoService, PaymentMethodRepository, PaymentMethodService, CountryRepository, CountryService,
     CityRepository, CityService, GenericListRepository, GenericListService, GenericListItemRepository, GenericListItemService
-    , MerchantRepository, MerchantService, RoleRepository, RoleService, BranchRepository, BranchService,  UserRepository,UserService,UnitRepository,UnitService],
+    , MerchantRepository, MerchantService, RoleRepository, RoleService, BranchRepository, BranchService,  UserRepository,UserService
+    ,UnitRepository,UnitService,SaleRepository,SaleService,ProductRepository,ProductService,SaleProductRepository,SaleProductService,
+  SalePaymentMethodRepository,SalePaymentMethodService],
   exports: [ColorService, ColorRepository, CurrencyRepository, CurrencyService, CustomerInfoRepository,
     CustomerInfoService, PaymentMethodRepository, PaymentMethodService, CountryRepository, CountryService,
     CityRepository, CityService, GenericListRepository, GenericListService, GenericListItemRepository, GenericListItemService
-    , MerchantRepository, MerchantService, RoleRepository, RoleService, BranchRepository, BranchService,UserRepository,UserService ,UnitRepository,UnitService],
+    , MerchantRepository, MerchantService, RoleRepository, RoleService, BranchRepository, BranchService,UserRepository,UserService ,
+    UnitRepository,UnitService,SaleRepository,SaleService,ProductRepository,ProductService,SaleProductRepository,SaleProductService,
+    SalePaymentMethodRepository,SalePaymentMethodService],
 })
 /**
  * This module contains only system wide used services (like repositories)

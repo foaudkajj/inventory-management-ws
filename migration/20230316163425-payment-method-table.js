@@ -7,7 +7,8 @@ module.exports = class PaymentMethodTable20230316163425 {
             `
         create table \`payment_method\` (
             \`id\` char(36) not null,
-            \`name\` varchar(50) not null
+            \`name\` varchar(50) not null,
+            PRIMARY KEY (id)
           ) Engine=InnoDB;
           `,
         );

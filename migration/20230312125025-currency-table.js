@@ -7,7 +7,8 @@ module.exports = class CurrencyTable20230312125025 {
             `
         create table \`currency\` (
             \`id\` char(36) not null,
-            \`name\` varchar(50) not null
+            \`name\` varchar(50) not null,
+            PRIMARY KEY (id)
           ) Engine=InnoDB;
           `,
         );

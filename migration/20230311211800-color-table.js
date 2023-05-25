@@ -8,7 +8,8 @@ module.exports = class ColorTable20230311211800 {
         create table \`color\` (
             \`id\` char(36) not null,
             \`name\` varchar(50) not null,
-            \`code\` varchar(30)  null
+            \`code\` varchar(30)  null,
+            PRIMARY KEY (id)
           ) Engine=InnoDB;
           `,
         );
