@@ -8,7 +8,8 @@ module.exports = class UnitTable20230521183500 {
         create table \`unit\` (
             \`id\` char(36) not null,
             \`name\` varchar(50) not null,
-            \`code\` varchar(10) not null
+            \`code\` varchar(10) not null,
+            PRIMARY KEY (id)
           ) Engine=InnoDB;
           `,
         );

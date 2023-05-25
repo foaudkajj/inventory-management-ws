@@ -9,7 +9,8 @@ module.exports = class CustomerInfoTable20230316132725 {
             \`id\` char(36) not null,
             \`name\` varchar(50) not null,
             \`phone\` varchar(50)  null,
-            \`accent_insensitive_name\` varchar(50) not null
+            \`accent_insensitive_name\` varchar(50) not null,
+            PRIMARY KEY (id)
           ) Engine=InnoDB;
           `,
         );

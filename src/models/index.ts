@@ -11,3 +11,7 @@ export * from './role.model';
 export * from './branch.model';
 export * from './user.model';
 export * from './unit.model';
+export * from './sale.model';
+export * from './product.model';
+export * from './sale-product.model';
+export * from './sale-payment-method.model';
