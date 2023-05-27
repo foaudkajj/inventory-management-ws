@@ -3,7 +3,7 @@ import {ApiParam} from '@nestjs/swagger';
 import {Branch} from 'src/models';
 import {BranchService} from './branch.service';
 
-@Controller('api/Branchs')
+@Controller('api/Branches')
 export class BranchController {
   constructor(private readonly branchService: BranchService) {}
 
