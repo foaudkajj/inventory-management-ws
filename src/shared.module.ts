@@ -56,25 +56,28 @@ import { SaleProductRepository } from './endpoints/sale-product/sale-product.rep
 import { SaleProductService } from './endpoints/sale-product/sale-product.service';
 import { SalePaymentMethodRepository } from './endpoints/sale-payment-method/sale-payment-method.repository';
 import { SalePaymentMethodService } from './endpoints/sale-payment-method/sale-payment-method.service';
+import { AuthService } from './endpoints/auth/auth.service';
+import { AuthController } from './endpoints/auth/auth.controller';
+import { LoginRequest } from './models/login-request';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Color, Currency, CustomerInfo, PaymentMethod, Country, City, GenericList, GenericListItem, Merchant
-    , Role, Branch, User,Unit,Sale,Product,SaleProduct,SalePaymentMethod])],
+    , Role, Branch, User, Unit, Sale, Product, SaleProduct, SalePaymentMethod, LoginRequest])],
   controllers: [ColorController, CurrencyController, CustomerInfoController, PaymentMethodController,
-    CountryController, CityController, GenericListController, GenericListItemController, MerchantController, RoleController, 
-    BranchController, UserController,UnitController,SaleController,ProductController,SaleProductController,SalePaymentMethodController],
+    CountryController, CityController, GenericListController, GenericListItemController, MerchantController, RoleController,
+    BranchController, UserController, UnitController, SaleController, ProductController, SaleProductController, SalePaymentMethodController, AuthController],
   providers: [ColorService, ColorRepository, CurrencyRepository, CurrencyService, CustomerInfoRepository,
     CustomerInfoService, PaymentMethodRepository, PaymentMethodService, CountryRepository, CountryService,
     CityRepository, CityService, GenericListRepository, GenericListService, GenericListItemRepository, GenericListItemService
-    , MerchantRepository, MerchantService, RoleRepository, RoleService, BranchRepository, BranchService,  UserRepository,UserService
-    ,UnitRepository,UnitService,SaleRepository,SaleService,ProductRepository,ProductService,SaleProductRepository,SaleProductService,
-  SalePaymentMethodRepository,SalePaymentMethodService],
+    , MerchantRepository, MerchantService, RoleRepository, RoleService, BranchRepository, BranchService, UserRepository, UserService
+    , UnitRepository, UnitService, SaleRepository, SaleService, ProductRepository, ProductService, SaleProductRepository, SaleProductService,
+    SalePaymentMethodRepository, SalePaymentMethodService, AuthService],
   exports: [ColorService, ColorRepository, CurrencyRepository, CurrencyService, CustomerInfoRepository,
     CustomerInfoService, PaymentMethodRepository, PaymentMethodService, CountryRepository, CountryService,
     CityRepository, CityService, GenericListRepository, GenericListService, GenericListItemRepository, GenericListItemService
-    , MerchantRepository, MerchantService, RoleRepository, RoleService, BranchRepository, BranchService,UserRepository,UserService ,
-    UnitRepository,UnitService,SaleRepository,SaleService,ProductRepository,ProductService,SaleProductRepository,SaleProductService,
-    SalePaymentMethodRepository,SalePaymentMethodService],
+    , MerchantRepository, MerchantService, RoleRepository, RoleService, BranchRepository, BranchService, UserRepository, UserService,
+    UnitRepository, UnitService, SaleRepository, SaleService, ProductRepository, ProductService, SaleProductRepository, SaleProductService,
+    SalePaymentMethodRepository, SalePaymentMethodService, AuthService],
 })
 /**
  * This module contains only system wide used services (like repositories)

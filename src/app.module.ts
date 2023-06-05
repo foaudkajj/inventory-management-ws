@@ -1,9 +1,13 @@
-import {Module} from '@nestjs/common';
-import {TypeOrmModule} from '@nestjs/typeorm';
-import {AppController} from './app.controller';
-import {AppService} from './app.service';
-import {ConfigModule} from '@nestjs/config';
-import {SharedModule} from './shared.module';
+import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { ConfigModule } from '@nestjs/config';
+import { SharedModule } from './shared.module';
+import { JwtModule } from '@nestjs/jwt';
+import { jwtConstants } from './endpoints/auth/constants';
+import { AuthGuard } from './endpoints/auth/auth.guard';
+import { APP_GUARD } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -28,8 +32,15 @@ import {SharedModule} from './shared.module';
       migrations: ["migration/*.js"],
     }),
     SharedModule,
-  ],
+    JwtModule.register({
+      global: true,
+      secret: jwtConstants.secret,
+      signOptions: { expiresIn: '8h' },
+    }),],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, {
+    provide: APP_GUARD,
+    useClass: AuthGuard,
+  },],
 })
-export class AppModule {}
+export class AppModule { }

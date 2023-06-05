@@ -5,6 +5,7 @@ import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, OneToMan
 
 @Entity()
 export class User {
+
   @PrimaryGeneratedColumn('uuid')
   @ApiProperty({ required: true, format: 'uuid' })
   id: string;
@@ -42,7 +43,6 @@ export class User {
   gsm: string;
 
   @Column({ length: 100, name: 'salt' })
-  @ApiProperty({ required: false, type: 'string' })
   salt: string;
 
   @Column({ length: 36, name: 'branch_id' })
