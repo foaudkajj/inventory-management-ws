@@ -1,7 +1,8 @@
-import { LoginRequest } from '../../models/login-request';
 import { UserService } from "../user/user.service";
 import { JwtService } from '@nestjs/jwt';
 import { HttpException, HttpStatus, Injectable, UnauthorizedException } from '@nestjs/common';
+import { LoginRequest } from "src/models";
+import { compare } from "bcryptjs";
 
 @Injectable()
 export class AuthService {
@@ -10,8 +11,7 @@ export class AuthService {
     async signIn(userReq: LoginRequest): Promise<any> {
 
         const user = await this.userService.findOne(userReq.username);
-        const bcrypt = await require('bcryptjs');
-        const hash = await bcrypt.compare(userReq.password, user.password);
+        const hash = await compare(userReq.password, user.password);
         if (!hash) {
             throw new HttpException(
                 'ERROR.WRONG_USERNAME_PASSWORD',
