@@ -8,8 +8,10 @@ export class UserController {
   constructor(private readonly userService: UserService) { }
 
   @Get('get')
-  getAll(): Promise<User[]> {
-    return this.userService.getAll();
+  async getAll(): Promise<User[]> {
+    const users = this.userService.getAll();
+    await users.then((user) => user.map((user) => user.password = "*****"))
+    return users;
   }
 
   @Post('insert')
