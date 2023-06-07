@@ -3,7 +3,7 @@ import { AuthService } from './auth.service';
 import { LoginRequest } from 'src/models/requests/login.request';
 import { Public } from './is-public';
 
-@Controller('login')
+@Controller('api/auth')
 export class AuthController {
     constructor(private authService: AuthService) { }
 
