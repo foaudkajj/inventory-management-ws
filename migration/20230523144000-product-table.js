@@ -19,7 +19,6 @@ module.exports = class ProductTable20230523144000 {
             \`selling_price\` decimal(8,2) not null,
             \`description\` varchar(1000) null,
             \`unit_id\` char(36) not null,
-            \`merchant_id\` char(36) not null,
             PRIMARY KEY (id),
             FOREIGN KEY (color_id) REFERENCES color(id)
             on delete restrict
@@ -28,9 +27,6 @@ module.exports = class ProductTable20230523144000 {
             on delete restrict
             ON UPDATE CASCADE,
             FOREIGN KEY (unit_id) REFERENCES unit(id)
-            on delete restrict
-            ON UPDATE CASCADE,
-            FOREIGN KEY (merchant_id) REFERENCES merchant(id)
             on delete restrict
             ON UPDATE CASCADE
           ) Engine=InnoDB;
@@ -41,7 +37,7 @@ module.exports = class ProductTable20230523144000 {
     async down(queryRunner) {
         await queryRunner.query(
             `drop table \`product\`;`,
-          );
+        );
     }
 
 }

@@ -30,7 +30,7 @@ import { PaymentMethodController } from './endpoints/payment-method/payment-meth
 import { CustomerInfoService } from './endpoints/customer-info/customer-info.service';
 import { CustomerInfoRepository } from './endpoints/customer-info/customer-info.repository';
 import { CustomerInfoController } from './endpoints/customer-info/customer-info.controller';
-import { CustomerInfo, GenericList, GenericListItem, Merchant, PaymentMethod, Branch, User, Unit, Sale, Product, SaleProduct, SalePaymentMethod, LoginRequest, Role, Color, Currency, Country, City } from 'src/models';
+import { CustomerInfo, GenericList, GenericListItem, Merchant, PaymentMethod, Branch, User, Unit, Sale, Product, SaleProduct, SalePaymentMethod, LoginRequest, Role, Color, Currency, Country, City, ProductCategory } from 'src/models';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ColorController } from './endpoints/color/color.controller';
@@ -54,25 +54,28 @@ import { SalePaymentMethodRepository } from './endpoints/sale-payment-method/sal
 import { SalePaymentMethodService } from './endpoints/sale-payment-method/sale-payment-method.service';
 import { AuthService } from './endpoints/auth/auth.service';
 import { AuthController } from './endpoints/auth/auth.controller';
+import { ProductCategoryController } from './endpoints/category-product/product-category.controller';
+import { ProductCategoryService } from './endpoints/category-product/product-category.service';
+import { ProductCategoryRepository } from './endpoints/category-product/product-category.repository';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Color, Currency, CustomerInfo, PaymentMethod, Country, City, GenericList, GenericListItem, Merchant
-    , Role, Branch, User, Unit, Sale, Product, SaleProduct, SalePaymentMethod, LoginRequest])],
+    , Role, Branch, User, Unit, Sale, Product, SaleProduct, SalePaymentMethod, LoginRequest, ProductCategory])],
   controllers: [ColorController, CurrencyController, CustomerInfoController, PaymentMethodController,
     CountryController, CityController, GenericListController, GenericListItemController, MerchantController, RoleController,
-    BranchController, UserController, UnitController, SaleController, ProductController, SaleProductController, SalePaymentMethodController, AuthController],
+    BranchController, UserController, UnitController, SaleController, ProductController, SaleProductController, SalePaymentMethodController, AuthController, ProductCategoryController],
   providers: [ColorService, ColorRepository, CurrencyRepository, CurrencyService, CustomerInfoRepository,
     CustomerInfoService, PaymentMethodRepository, PaymentMethodService, CountryRepository, CountryService,
     CityRepository, CityService, GenericListRepository, GenericListService, GenericListItemRepository, GenericListItemService
     , MerchantRepository, MerchantService, RoleRepository, RoleService, BranchRepository, BranchService, UserRepository, UserService
     , UnitRepository, UnitService, SaleRepository, SaleService, ProductRepository, ProductService, SaleProductRepository, SaleProductService,
-    SalePaymentMethodRepository, SalePaymentMethodService, AuthService],
+    SalePaymentMethodRepository, SalePaymentMethodService, AuthService, ProductCategoryService, ProductCategoryRepository],
   exports: [ColorService, ColorRepository, CurrencyRepository, CurrencyService, CustomerInfoRepository,
     CustomerInfoService, PaymentMethodRepository, PaymentMethodService, CountryRepository, CountryService,
     CityRepository, CityService, GenericListRepository, GenericListService, GenericListItemRepository, GenericListItemService
     , MerchantRepository, MerchantService, RoleRepository, RoleService, BranchRepository, BranchService, UserRepository, UserService,
     UnitRepository, UnitService, SaleRepository, SaleService, ProductRepository, ProductService, SaleProductRepository, SaleProductService,
-    SalePaymentMethodRepository, SalePaymentMethodService, AuthService],
+    SalePaymentMethodRepository, SalePaymentMethodService, AuthService, ProductCategoryService, ProductCategoryRepository],
 })
 /**
  * This module contains only system wide used services (like repositories)
