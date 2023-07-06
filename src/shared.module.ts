@@ -54,9 +54,9 @@ import { SalePaymentMethodRepository } from './endpoints/sale-payment-method/sal
 import { SalePaymentMethodService } from './endpoints/sale-payment-method/sale-payment-method.service';
 import { AuthService } from './endpoints/auth/auth.service';
 import { AuthController } from './endpoints/auth/auth.controller';
-import { ProductCategoryController } from './endpoints/category-product/product-category.controller';
-import { ProductCategoryService } from './endpoints/category-product/product-category.service';
-import { ProductCategoryRepository } from './endpoints/category-product/product-category.repository';
+import { ProductCategoryController } from './endpoints/product-category/product-category.controller';
+import { ProductCategoryService } from './endpoints/product-category/product-category.service';
+import { ProductCategoryRepository } from './endpoints/product-category/product-category.repository';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Color, Currency, CustomerInfo, PaymentMethod, Country, City, GenericList, GenericListItem, Merchant
