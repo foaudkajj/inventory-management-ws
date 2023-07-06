@@ -2,6 +2,7 @@ import { Genders } from './enums';
 import { ApiProperty } from '@nestjs/swagger';
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Branch } from './branch.model';
+import { ProductCategory } from './product-category.model';
 
 @Entity()
 export class Product {
@@ -57,7 +58,16 @@ export class Product {
   @ApiProperty({ required: true, format: 'uuid' })
   unitId: string;
 
+  @Column({ length: 36, name: 'category_id' })
+  @ApiProperty({ required: true, format: 'uuid' })
+  categoryId: string;
+
+
   @ManyToOne(() => Branch, (branch) => branch.productList)
   @JoinColumn({ name: 'branch_id' })
   branch: Branch
+
+  @ManyToOne(() => ProductCategory, (category) => category.id)
+  @JoinColumn({ name: 'category_id' })
+  category: ProductCategory
 }
