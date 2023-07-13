@@ -18,7 +18,9 @@ module.exports = class ProductTable20230523144000 {
             \`branch_id\` char(36) null,
             \`selling_price\` decimal(8,2) not null,
             \`description\` varchar(1000) null,
+            \`picture_url\` varchar(200) null,
             \`unit_id\` char(36) not null,
+            \`category_id\` char(36) not null,
             PRIMARY KEY (id),
             FOREIGN KEY (color_id) REFERENCES color(id)
             on delete restrict
@@ -27,6 +29,9 @@ module.exports = class ProductTable20230523144000 {
             on delete restrict
             ON UPDATE CASCADE,
             FOREIGN KEY (unit_id) REFERENCES unit(id)
+            on delete restrict
+            ON UPDATE CASCADE,
+            FOREIGN KEY (category_id) REFERENCES product_category(id)
             on delete restrict
             ON UPDATE CASCADE
           ) Engine=InnoDB;

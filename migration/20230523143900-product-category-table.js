@@ -6,8 +6,9 @@ module.exports = class productCategoryTable20230704154200 {
         await queryRunner.query(
             `
         create table \`product_category\` (
-            \`id\` char(100) not null,
-            \`name\` varchar(50) not null
+            \`id\` char(36) not null,
+            \`name\` varchar(100) not null,
+            PRIMARY KEY (id),
           ) Engine=InnoDB;
           `,
         );

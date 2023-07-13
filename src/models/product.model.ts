@@ -52,6 +52,10 @@ export class Product {
 
   @Column({ length: 1000, name: 'description' })
   @ApiProperty({ required: false, type: 'string' })
+  description: string;
+
+  @Column({ length: 200, name: 'picture_url' })
+  @ApiProperty({ required: false, type: 'string' })
   pictureUrl: string;
 
   @Column({ length: 36, name: 'unit_id' })
