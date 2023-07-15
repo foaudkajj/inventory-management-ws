@@ -4,27 +4,27 @@ module.exports = class createSystemUser20230621110025 {
     async up(queryRunner) {
         await queryRunner.query(
             `insert into \`generic_list\`(\`id\`,\`name\`) values
-            ('c44a84c8-fb2b-418d-a79c-eba3889f38bb','system-generic-list');`
+            ('c44a84c8-fb2b-418d-a79c-eba3889f38bb','default-generic-list');`
         )
         await queryRunner.query(
             `  insert into \`generic_list_item\`(\`id\`,\`name\`,\`list_id\`) values 
-            ('b4df6c9e-7c06-4c86-bbe0-9a6442f97587','system-generic-list-item','c44a84c8-fb2b-418d-a79c-eba3889f38bb');
+            ('b4df6c9e-7c06-4c86-bbe0-9a6442f97587','default-generic-list-item','c44a84c8-fb2b-418d-a79c-eba3889f38bb');
             ` )
         await queryRunner.query(
             ` insert into \`merchant\`(\`id\`,\`title\`,\`company_type\`) values
-            ('a136bba1-6119-444b-8b82-db92460fd2fb','system-merchant','b4df6c9e-7c06-4c86-bbe0-9a6442f97587');
+            ('a136bba1-6119-444b-8b82-db92460fd2fb','default-merchant','b4df6c9e-7c06-4c86-bbe0-9a6442f97587');
             ` )
         await queryRunner.query(
             `  insert into \`role\`(\`id\`,\`name\`,\`merchant_id\`) values
-            ('737df246-d5f3-4434-8e9d-db8a4c136eab','system-role','a136bba1-6119-444b-8b82-db92460fd2fb');
+            ('737df246-d5f3-4434-8e9d-db8a4c136eab','admin','a136bba1-6119-444b-8b82-db92460fd2fb');
             ` )
         await queryRunner.query(
             ` insert into \`branch\`(\`id\`,\`name\`,\`city_id\`,\`country_id\`,\`merchant_id\`) values
-            ('e854f50a-8c78-439c-b926-0583ade6f44b','system-branch','46d7163d-b443-4f1f-a5ac-cabd9dbd5840','01a88864-b14e-41d5-86ed-110ffbd6c2ce','a136bba1-6119-444b-8b82-db92460fd2fb');
+            ('e854f50a-8c78-439c-b926-0583ade6f44b','default-branch','46d7163d-b443-4f1f-a5ac-cabd9dbd5840','01a88864-b14e-41d5-86ed-110ffbd6c2ce','a136bba1-6119-444b-8b82-db92460fd2fb');
             ` )
         await queryRunner.query(
             `  insert into \`user\`(\`id\`,\`first_name\`,\`last_name\`,\`username\`,\`password\`,\`branch_id\`,\`merchant_id\`,\`role_id\`) values
-            ('9cb43a6a-ff04-44d1-9241-572c2ee03378','system-user','system-user','system-user','$2a$10$FLCrQUpKQuqMedxbKi1ilekwBFy2E8jbby8JvIwoLcX3Y9NeqAcfq','e854f50a-8c78-439c-b926-0583ade6f44b','a136bba1-6119-444b-8b82-db92460fd2fb','737df246-d5f3-4434-8e9d-db8a4c136eab');
+            ('9cb43a6a-ff04-44d1-9241-572c2ee03378','default-user','default-user','default-user','$2a$10$FLCrQUpKQuqMedxbKi1ilekwBFy2E8jbby8JvIwoLcX3Y9NeqAcfq','e854f50a-8c78-439c-b926-0583ade6f44b','a136bba1-6119-444b-8b82-db92460fd2fb','737df246-d5f3-4434-8e9d-db8a4c136eab');
             `    )
 
     }
@@ -41,5 +41,5 @@ module.exports = class createSystemUser20230621110025 {
         )
     }
 
-    //username:system-user , password:123456
+    //username: default-user , password:123456
 }
