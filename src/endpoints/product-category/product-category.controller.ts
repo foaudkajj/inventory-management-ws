@@ -8,7 +8,6 @@ import { AuthGuard } from '../auth/auth.guard';
 export class ProductCategoryController {
   constructor(private readonly productCategoryService: ProductCategoryService) { }
 
-  @UseGuards(AuthGuard)
   @Get('get')
   getAll(): Promise<ProductCategory[]> {
     return this.productCategoryService.getAll();

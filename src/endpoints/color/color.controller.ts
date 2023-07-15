@@ -8,7 +8,6 @@ import { AuthGuard } from '../auth/auth.guard';
 export class ColorController {
   constructor(private readonly colorService: ColorService) { }
 
-  @UseGuards(AuthGuard)
   @Get('get')
   getAll(): Promise<Color[]> {
     return this.colorService.getAll();
