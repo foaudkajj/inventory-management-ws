@@ -16,3 +16,4 @@ export * from './product.model';
 export * from './sale-product.model';
 export * from './sale-payment-method.model';
 export * from './requests/login.request';
+export * from './product-category.model';
