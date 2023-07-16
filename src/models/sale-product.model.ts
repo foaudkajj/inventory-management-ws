@@ -25,9 +25,9 @@ export class SaleProduct {
   @ApiProperty({ required: true, type: 'decimal' })
   price: number;
 
-  @Column({ precision: 8, scale: 2, name: 'celling_price' })
+  @Column({ precision: 8, scale: 2, name: 'selling_price' })
   @ApiProperty({ required: true, type: 'decimal' })
-  cellingPrice: number;
+  sellingPrice: number;
 
   @OneToMany(() => Sale, (sale) => sale.id)
   @JoinColumn({ name: 'sale_id' })

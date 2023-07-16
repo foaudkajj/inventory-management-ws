@@ -11,7 +11,7 @@ module.exports = class SaleProductTable20230524141100 {
             \`product_id\` char(36) not null,
             \`product_count\` int not null,
             \`price\` decimal(8,2) not null,
-            \`celling_price\` decimal(8,2) not null,
+            \`selling_price\` decimal(8,2) not null,
             PRIMARY KEY (id),
             FOREIGN KEY (sale_id) REFERENCES sale(id)
             on delete restrict
