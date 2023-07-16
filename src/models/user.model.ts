@@ -28,19 +28,19 @@ export class User {
 
   @Column({ length: 200, name: 'password' })
   @ApiProperty({ required: false, type: 'string' })
-  password: string;
+  password?: string;
 
   @Column({ length: 200, name: 'picture_url' })
   @ApiProperty({ required: false, type: 'string' })
-  pictureUrl: string;
+  pictureUrl?: string;
 
   @Column({ length: 50, name: 'email' })
   @ApiProperty({ required: false, type: 'string' })
-  email: string;
+  email?: string;
 
   @Column({ length: 30, name: 'gsm' })
   @ApiProperty({ required: false, type: 'string' })
-  gsm: string;
+  gsm?: string;
 
   @Column({ length: 100, name: 'salt' })
   salt: string;

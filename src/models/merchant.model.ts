@@ -23,24 +23,24 @@ export class Merchant {
 
   @Column({ name: 'founding_date' })
   @ApiProperty({ required: false, type: 'datetime' })
-  foundingDate: Date;
+  foundingDate?: Date;
 
   @Column({ length: 300, name: 'tax_office' })
   @ApiProperty({ required: false, type: 'string' })
-  taxOffice: string;
+  taxOffice?: string;
 
   @Column({ length: 50, name: 'tax_number' })
   @ApiProperty({ required: false, type: 'string' })
-  taxNumber: string;
+  taxNumber?: string;
 
 
   @Column({ length: 20, name: 'phone' })
   @ApiProperty({ required: false, type: 'string' })
-  phone: string;
+  phone?: string;
 
   @Column({ length: 50, name: 'website' })
   @ApiProperty({ required: false, type: 'string' })
-  website: string;
+  website?: string;
 
   @OneToMany(() => ProductCategory, (category) => category.id)
   category: ProductCategory[]
