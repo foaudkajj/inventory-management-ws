@@ -20,7 +20,7 @@ export class Product {
 
   @Column({ length: 50, name: 'short_code' })
   @ApiProperty({ required: false, type: 'string' })
-  shortCode: string;
+  shortCode?: string;
 
   @Column({ length: 36, name: 'color_id' })
   @ApiProperty({ required: true, format: 'uuid' })
@@ -28,7 +28,7 @@ export class Product {
 
   @Column({ name: 'gender' })
   @ApiProperty({ type: 'enum', enum: Genders })
-  gender: Genders;
+  gender?: Genders;
 
   @Column({ precision: 8, scale: 2, name: 'price' })
   @ApiProperty({ required: true, type: 'decimal' })
@@ -36,7 +36,7 @@ export class Product {
 
   @Column({ name: 'size' })
   @ApiProperty({ required: false, type: 'int' })
-  size: number;
+  size?: number;
 
   @Column({ name: 'quantity' })
   @ApiProperty({ required: true, type: 'int' })
@@ -52,11 +52,11 @@ export class Product {
 
   @Column({ length: 1000, name: 'description' })
   @ApiProperty({ required: false, type: 'string' })
-  description: string;
+  description?: string;
 
   @Column({ length: 200, name: 'picture_url' })
   @ApiProperty({ required: false, type: 'string' })
-  pictureUrl: string;
+  pictureUrl?: string;
 
   @Column({ length: 36, name: 'unit_id' })
   @ApiProperty({ required: true, format: 'uuid' })
