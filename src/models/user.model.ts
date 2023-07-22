@@ -63,7 +63,6 @@ export class User {
 
 
   @Column({ length: 36, name: 'merchant_id' })
-  @ApiProperty({ required: true, format: 'uuid' })
   merchantId: string;
 
   @ManyToOne(() => Merchant, (merchant) => merchant.id)

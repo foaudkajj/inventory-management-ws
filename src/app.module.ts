@@ -31,12 +31,12 @@ import { APP_GUARD } from '@nestjs/core';
       migrationsRun: true,
       migrations: ["migration/*.js"],
     }),
-    SharedModule,
+
     JwtModule.register({
       global: true,
       secret: jwtConstants.secret,
       signOptions: { expiresIn: '8h' },
-    }),],
+    }), SharedModule],
   controllers: [AppController],
   providers: [AppService, {
     provide: APP_GUARD,

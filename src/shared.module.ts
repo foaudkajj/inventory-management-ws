@@ -57,10 +57,14 @@ import { AuthController } from './endpoints/auth/auth.controller';
 import { ProductCategoryController } from './endpoints/product-category/product-category.controller';
 import { ProductCategoryService } from './endpoints/product-category/product-category.service';
 import { ProductCategoryRepository } from './endpoints/product-category/product-category.repository';
+import { ClsModule } from 'nestjs-cls';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Color, Currency, CustomerInfo, PaymentMethod, Country, City, GenericList, GenericListItem, Merchant
-    , Role, Branch, User, Unit, Sale, Product, SaleProduct, SalePaymentMethod, LoginRequest, ProductCategory])],
+    , Role, Branch, User, Unit, Sale, Product, SaleProduct, SalePaymentMethod, LoginRequest, ProductCategory]), ClsModule.forRoot({
+      global: true,
+      middleware: { mount: true },
+    }),],
   controllers: [ColorController, CurrencyController, CustomerInfoController, PaymentMethodController,
     CountryController, CityController, GenericListController, GenericListItemController, MerchantController, RoleController,
     BranchController, UserController, UnitController, SaleController, ProductController, SaleProductController, SalePaymentMethodController, AuthController, ProductCategoryController],
