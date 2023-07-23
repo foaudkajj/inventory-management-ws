@@ -2,13 +2,12 @@ import { User } from 'src/models';
 import { UserRepository } from './user.repository';
 import { Injectable } from '@nestjs/common';
 import { genSalt, hash } from 'bcryptjs';
-
-
+import { ClsService } from 'nestjs-cls';
 
 @Injectable()
 export class UserService {
 
-  constructor(private userRepository: UserRepository) { }
+  constructor(private userRepository: UserRepository, private readonly cls: ClsService) { }
   getAll(): Promise<User[]> {
     return this.userRepository.orm.find();
   }
@@ -18,6 +17,7 @@ export class UserService {
     const hashString = await hash(row.password, salt)
     row.password = hashString;
     row.salt = salt;
+    row.merchantId = this.cls.get('user.merchantId');
     return this.userRepository.orm.insert(row);
   }
 
@@ -28,6 +28,7 @@ export class UserService {
       row.password = hashString;
       row.salt = salt;
     }
+    row.merchantId = this.cls.get('user.merchantId');
     return this.userRepository.orm.update({ id: id }, row);
   }
 
