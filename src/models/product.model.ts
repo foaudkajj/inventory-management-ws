@@ -1,4 +1,4 @@
-import { Genders } from './enums';
+import { Gender } from './enums';
 import { ApiProperty } from '@nestjs/swagger';
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Branch } from './branch.model';
@@ -27,8 +27,8 @@ export class Product {
   colorId: string;
 
   @Column({ name: 'gender' })
-  @ApiProperty({ type: 'enum', enum: Genders })
-  gender?: Genders;
+  @ApiProperty({ type: 'enum', enum: Gender })
+  gender?: Gender;
 
   @Column({ precision: 8, scale: 2, name: 'price' })
   @ApiProperty({ required: true, type: 'decimal' })
