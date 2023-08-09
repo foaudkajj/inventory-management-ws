@@ -23,4 +23,9 @@ export class ProductService {
   delete(id: string) {
     return this.productRepository.orm.delete({ id: id });
   }
+
+  async getByBarcode(barcode: string): Promise<Product> {
+    const product = await this.productRepository.orm.findOne({ where: { barcode: barcode } });
+    return product;
+  }
 }
