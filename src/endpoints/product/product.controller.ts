@@ -1,11 +1,11 @@
-import {Controller, Get, Post, Body, Put, Param, Delete} from '@nestjs/common';
-import {ApiParam} from '@nestjs/swagger';
-import {Product} from 'src/models';
-import {ProductService} from './product.service';
+import { Controller, Get, Post, Body, Put, Param, Delete } from '@nestjs/common';
+import { ApiParam } from '@nestjs/swagger';
+import { Product } from 'src/models';
+import { ProductService } from './product.service';
 
 @Controller('api/Products')
 export class ProductController {
-  constructor(private readonly productService: ProductService) {}
+  constructor(private readonly productService: ProductService) { }
 
   @Get('get')
   getAll(): Promise<Product[]> {
@@ -18,14 +18,19 @@ export class ProductController {
   }
 
   @Put('update/:id')
-  @ApiParam({name: 'id'})
+  @ApiParam({ name: 'id' })
   update(@Body() row: Product, @Param('id') id: string) {
     return this.productService.update(row, id);
   }
 
   @Delete('delete/:id')
-  @ApiParam({name: 'id'})
+  @ApiParam({ name: 'id' })
   delete(@Param('id') id: string) {
     return this.productService.delete(id);
+  }
+  @Get('getByBarcode/:barcode')
+  @ApiParam({ name: 'barcode' })
+  getByBarcode(@Param('barcode') barcode: string) {
+    return this.productService.getByBarcode(barcode);
   }
 }
