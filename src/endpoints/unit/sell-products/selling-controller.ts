@@ -33,7 +33,7 @@ export class SellingController {
     const paymentMethods = await this.paymentMethodService.getAll();
 
     if (
-      total ==
+      total !==
       saleRequest.paymentMethods
         .map(x => x.amount)
         .reduce((accumulator, currentValue) => accumulator + currentValue)
@@ -44,7 +44,7 @@ export class SellingController {
     if (total <= 0) {
       throw new error('selling-controller.total-not-valid');
     }
-    
+
     if (
       saleRequest.products
         .map(x => x.productCount)
