@@ -7,16 +7,15 @@ import { SaleProductService } from 'src/endpoints/sale-product/sale-product.serv
 import { ProductService } from 'src/endpoints/product/product.service';
 import { SalePaymentMethodService } from 'src/endpoints/sale-payment-method/sale-payment-method.service';
 import { PaymentMethodService } from 'src/endpoints/payment-method/payment-method.service';
+import { DataSource } from 'typeorm';
 
 @Controller('api/selling')
 export class SellingController {
     constructor(
-        private readonly saleService: SaleService,
         private readonly cls: ClsService,
-        private readonly saleProductService: SaleProductService,
         private readonly productService: ProductService,
-        private readonly salePaymentMethodService: SalePaymentMethodService,
         private readonly paymentMethodService: PaymentMethodService,
+        public dataSource: DataSource,
     ) { }
 
     @Post('sellProducts')
@@ -107,8 +106,10 @@ export class SellingController {
                     return salePaymentMethod;
                 }
             });
-        await this.saleService.insert(sale);
-        await this.saleProductService.insert(saleProducts);
-        await this.salePaymentMethodService.insert(salepaymentMethods);
+        await this.dataSource.manager.transaction(async (transactionalEntityManager) => {
+            await transactionalEntityManager.save(sale)
+            await transactionalEntityManager.save(saleProducts)
+            await transactionalEntityManager.save(salepaymentMethods)
+        });
     }
 }
