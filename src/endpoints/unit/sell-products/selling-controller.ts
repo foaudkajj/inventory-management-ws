@@ -1,12 +1,11 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { SaleService } from 'src/endpoints/sale/sale.service';
-import { PaymentMethod, Product, Sale, SalePaymentMethod, SaleProduct, SaleRequest } from 'src/models';
+import { Sale, SalePaymentMethod, SaleProduct, SaleRequest } from 'src/models';
 import { ClsService } from 'nestjs-cls';
 import { v4 as uuidv4 } from 'uuid';
 import { SaleProductService } from 'src/endpoints/sale-product/sale-product.service';
 import { ProductService } from 'src/endpoints/product/product.service';
 import { SalePaymentMethodService } from 'src/endpoints/sale-payment-method/sale-payment-method.service';
-import { error } from 'console';
 import { PaymentMethodService } from 'src/endpoints/payment-method/payment-method.service';
 
 @Controller('api/selling')
@@ -39,40 +38,40 @@ export class SellingController {
             .reduce((accumulator, currentValue) => accumulator + currentValue);
 
         if (total <= 0) {
-            throw new error('selling-controller.total-not-valid');
+            throw new Error('selling-controller.total-not-valid');
         }
         if (
             totalAmount <= 0
         ) {
-            throw new error('selling-payment-method.amount-not-valid');
+            throw new Error('selling-payment-method.amount-not-valid');
         }
         if (
             total !== totalAmount
 
         ) {
-            throw new error('selling-product.payments-non-valid');
+            throw new Error('selling-product.payments-non-valid');
         }
         if (
             saleRequest.products
                 .map(x => x.productCount)
                 .reduce((accumulator, currentValue) => accumulator + currentValue) < 1
         ) {
-            throw new error('selling-product.no-product-to-sale');
+            throw new Error('selling-product.no-product-to-sale');
         }
         if (
             sellingPriceOfReq <= 0
         ) {
-            throw new error('product.selling-price-not-valid');
+            throw new Error('product.selling-price-not-valid');
         }
         if (
             !productsFromDb
         ) {
-            throw new error('product.id-not-valid');
+            throw new Error('product.id-not-valid');
         }
         if (
             !paymentMethodsFromDb
         ) {
-            throw new error('selling-payment-method.id-not*valid');
+            throw new Error('selling-payment-method.id-not*valid');
         }
         const sale = new Sale();
         sale.branchId = await this.cls.get('user.branchId');
@@ -96,7 +95,6 @@ export class SellingController {
                     saleProduct.sellingPrice = product.sellingPrice
                 return saleProduct
             });
-
         const salepaymentMethods: SalePaymentMethod[] =
             saleRequest.paymentMethods.map(paymentmehod => {
                 const salePaymentMethod = new SalePaymentMethod();
@@ -109,8 +107,8 @@ export class SellingController {
                     return salePaymentMethod;
                 }
             });
-        this.saleService.insert(sale);
-        this.saleProductService.insert(saleProducts);
-        this.salePaymentMethodService.insert(salepaymentMethods);
+        await this.saleService.insert(sale);
+        await this.saleProductService.insert(saleProducts);
+        await this.salePaymentMethodService.insert(salepaymentMethods);
     }
 }
