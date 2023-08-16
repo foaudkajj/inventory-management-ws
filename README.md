@@ -1,73 +1,60 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# API Services Repository
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Welcome to the API Services Repository! This repository contains a comprehensive API built using the NestJS framework, focusing on creating, reading, updating, and deleting (CRUD) operations, data migrations, localization, authentication, user password hashing, and advanced features like user context and transactions. 
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Table of Contents
+- [Introduction](#introduction)
+- [Technologies Used](#technologies-used)
+- [Getting Started](#getting-started)
+- [Endpoints](#endpoints)
+- [Localization](#localization)
+- [Authentication](#authentication)
+- [Password Hashing](#password-hashing)
+- [User Context](#user-context)
+- [Transactions](#transactions)
 
-## Description
+## Introduction
+This repository showcases the implementation of a robust API using NestJS, which demonstrates best practices for structuring an API, using services and controllers to interact with a database, performing CRUD operations, data migrations, and incorporating advanced features like localization, authentication, password hashing, user context, and transactions.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Technologies Used
+- **NestJS**: A powerful and extensible Node.js framework for building scalable and maintainable server-side applications.
+- **TypeORM**: A TypeScript-based ORM that simplifies database interactions by providing a set of tools for managing databases and performing migrations.
+- **i18next**: A popular internationalization framework for handling localization and translations in your application.
+- **JWT (JSON Web Tokens)**: A secure way to authenticate users by generating and verifying tokens.
+- **bcryptjs**: A library for hashing passwords securely.
+- **NestJS CLS**: A library for managing contextual data, like the current user, throughout the request lifecycle.
+- **Transactions**: A technique for grouping multiple database operations into a single unit of work to ensure data integrity.
 
-## Installation
+## Getting Started
+1. Clone this repository: `git clone https://github.com/foaudkajj/inventory-management-ws.git`
+2. Navigate to the project directory: `cd inventory-management-ws`
+3. Install dependencies: `npm install`
+4. Set up your database connection in the `.env` file.
+5. Run migrations to create necessary tables: `npm run typeorm migration:run`
+6. Start the server: `npm run start:dev`
 
-```bash
-$ npm install
-```
+## Endpoints
+- **POST /api/users**: Create a new user.
+- **GET /api/users/:id**: Retrieve user details.
+- **PUT /api/users/:id**: Update user information.
+- **DELETE /api/users/:id**: Delete a user.
+- (And more endpoints as needed for your application)
 
-## Running the app
+## Localization
+Localization is implemented using the `i18next` framework, allowing users to access the API in their preferred language. The language can be specified in the request headers.
 
-```bash
-# development
-$ npm run start
+## Authentication
+Authentication is performed using JWT (JSON Web Tokens). Users can obtain a token by sending their credentials to the `/auth/login` endpoint. Subsequent requests to protected endpoints require the inclusion of the JWT token in the request headers.
 
-# watch mode
-$ npm run start:dev
+## Password Hashing
+User passwords are securely hashed using the `bcryptjs` library before being stored in the database. This ensures that user data remains confidential even if the database is compromised.
 
-# production mode
-$ npm run start:prod
-```
+## User Context
+The NestJS CLS library is used to manage user context throughout the request lifecycle. This allows you to easily access the current user's information across different parts of the application.
 
-## Test
+## Transactions
+Transactions are employed for ensuring data integrity. For example, when performing multi-step operations that involve multiple database interactions, transactions can be used to either commit all changes or roll back in case of an error.
 
-```bash
-# unit tests
-$ npm run test
+Feel free to explore the codebase, contribute, and learn from this repository. If you have any questions or suggestions, please open an issue or reach out to the maintainers.
 
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+Happy coding!
