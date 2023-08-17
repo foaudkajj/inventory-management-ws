@@ -5,7 +5,9 @@ import {SalePaymentMethodService} from './sale-payment-method.service';
 
 @Controller('api/SalePaymentMethods')
 export class SalePaymentMethodController {
-  constructor(private readonly salePaymentMethodService: SalePaymentMethodService) {}
+  constructor(
+    private readonly salePaymentMethodService: SalePaymentMethodService,
+  ) {}
 
   @Get('get')
   getAll(): Promise<SalePaymentMethod[]> {

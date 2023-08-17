@@ -1,7 +1,7 @@
 import {Injectable} from '@nestjs/common';
 import {InjectRepository} from '@nestjs/typeorm';
 import {BaseRepository} from 'src/base.repository';
-import { Color } from 'src/models';
+import {Color} from 'src/models';
 import {DataSource, Repository} from 'typeorm';
 
 @Injectable()

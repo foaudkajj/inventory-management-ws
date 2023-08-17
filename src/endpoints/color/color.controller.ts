@@ -1,12 +1,21 @@
-import { Controller, Get, Post, Body, Put, Param, Delete, UseGuards } from '@nestjs/common';
-import { ApiParam } from '@nestjs/swagger';
-import { Color } from 'src/models';
-import { ColorService } from './color.service';
-import { AuthGuard } from '../auth/auth.guard';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Put,
+  Param,
+  Delete,
+  UseGuards,
+} from '@nestjs/common';
+import {ApiParam} from '@nestjs/swagger';
+import {Color} from 'src/models';
+import {ColorService} from './color.service';
+import {AuthGuard} from '../auth/auth.guard';
 
 @Controller('api/colors')
 export class ColorController {
-  constructor(private readonly colorService: ColorService) { }
+  constructor(private readonly colorService: ColorService) {}
 
   @Get('get')
   getAll(): Promise<Color[]> {
@@ -19,13 +28,13 @@ export class ColorController {
   }
 
   @Put('update/:id')
-  @ApiParam({ name: 'id' })
+  @ApiParam({name: 'id'})
   update(@Body() row: Color, @Param('id') id: string) {
     return this.colorService.update(row, id);
   }
 
   @Delete('delete/:id')
-  @ApiParam({ name: 'id' })
+  @ApiParam({name: 'id'})
   delete(@Param('id') id: string) {
     return this.colorService.delete(id);
   }

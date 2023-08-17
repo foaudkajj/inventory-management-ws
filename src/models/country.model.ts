@@ -10,5 +10,4 @@ export class Country {
   @Column({length: 50, name: 'name'})
   @ApiProperty({required: true, type: 'string'})
   name: string;
-
 }

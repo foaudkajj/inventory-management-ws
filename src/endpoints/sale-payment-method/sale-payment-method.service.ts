@@ -1,10 +1,12 @@
-import { Injectable } from '@nestjs/common';
-import { SalePaymentMethod } from 'src/models';
-import { SalePaymentMethodRepository } from './sale-payment-method.repository';
+import {Injectable} from '@nestjs/common';
+import {SalePaymentMethod} from 'src/models';
+import {SalePaymentMethodRepository} from './sale-payment-method.repository';
 
 @Injectable()
 export class SalePaymentMethodService {
-  constructor(private salePaymentMethodRepository: SalePaymentMethodRepository) { }
+  constructor(
+    private salePaymentMethodRepository: SalePaymentMethodRepository,
+  ) {}
   getAll(): Promise<SalePaymentMethod[]> {
     return this.salePaymentMethodRepository.orm.find();
   }
@@ -14,10 +16,10 @@ export class SalePaymentMethodService {
   }
 
   update(row: Partial<SalePaymentMethod>, id: string) {
-    return this.salePaymentMethodRepository.orm.update({ id: id }, row);
+    return this.salePaymentMethodRepository.orm.update({id: id}, row);
   }
 
   delete(id: string) {
-    return this.salePaymentMethodRepository.orm.delete({ id: id });
+    return this.salePaymentMethodRepository.orm.delete({id: id});
   }
 }
