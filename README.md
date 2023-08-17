@@ -6,7 +6,7 @@ Welcome to the API Services Repository! This repository contains a comprehensive
 - [Introduction](#introduction)
 - [Technologies Used](#technologies-used)
 - [Getting Started](#getting-started)
-- [Endpoints](#endpoints)
+- [Using Swagger](#using-swagger)
 - [Authentication](#authentication)
 - [Password Hashing](#password-hashing)
 - [User Context](#user-context)
@@ -32,13 +32,17 @@ This repository showcases the implementation of a robust API using NestJS, which
 5. Run migrations to create necessary tables: `npm run typeorm migration:run`
 6. Start the server: `npm run start:dev`
 
-## Endpoints
-- **POST /api/users**: Create a new user.
-- **GET /api/users/:id**: Retrieve user details.
-- **PUT /api/users/:id**: Update user information.
-- **DELETE /api/users/:id**: Delete a user.
-- (And more endpoints as needed for your application)
 
+## Using Swagger
+We have integrated Swagger for API documentation. To access the Swagger documentation, follow these steps:
+
+Make sure the local server is running (http://localhost:3000/swagger#/).
+
+Open your web browser and navigate to Swagger Documentation URL to interact with the API endpoints.
+
+Login using the login endpoint and use the given token to Authorize.
+
+You can explore different endpoints, make requests, and view responses using the Swagger interface.
 
 ## Authentication
 Authentication is performed using JWT (JSON Web Tokens). Users can obtain a token by sending their credentials to the `/auth/login` endpoint. Subsequent requests to protected endpoints require the inclusion of the JWT token in the request headers.
