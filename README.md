@@ -7,7 +7,6 @@ Welcome to the API Services Repository! This repository contains a comprehensive
 - [Technologies Used](#technologies-used)
 - [Getting Started](#getting-started)
 - [Endpoints](#endpoints)
-- [Localization](#localization)
 - [Authentication](#authentication)
 - [Password Hashing](#password-hashing)
 - [User Context](#user-context)
@@ -40,8 +39,6 @@ This repository showcases the implementation of a robust API using NestJS, which
 - **DELETE /api/users/:id**: Delete a user.
 - (And more endpoints as needed for your application)
 
-## Localization
-Localization is implemented using the `i18next` framework, allowing users to access the API in their preferred language. The language can be specified in the request headers.
 
 ## Authentication
 Authentication is performed using JWT (JSON Web Tokens). Users can obtain a token by sending their credentials to the `/auth/login` endpoint. Subsequent requests to protected endpoints require the inclusion of the JWT token in the request headers.
