@@ -1,19 +1,19 @@
-import { UserService } from '../user/user.service';
-import { JwtService } from '@nestjs/jwt';
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { LoginRequest, User } from 'src/models';
-import { compare } from 'bcryptjs';
+import {UserService} from '../user/user.service';
+import {JwtService} from '@nestjs/jwt';
+import {HttpException, HttpStatus, Injectable} from '@nestjs/common';
+import {LoginRequest, User} from 'src/models';
+import {compare} from 'bcryptjs';
 
 @Injectable()
 export class AuthService {
   constructor(
     private userService: UserService,
     private jwtService: JwtService,
-  ) { }
+  ) {}
 
   async signIn(
     userReq: LoginRequest,
-  ): Promise<{ access_token: string; user: User }> {
+  ): Promise<{access_token: string; user: User}> {
     const user = await this.userService.findOne(userReq.username);
     if (!user) {
       throw new HttpException('ERROR.WRONG_USERNAME', HttpStatus.UNAUTHORIZED);

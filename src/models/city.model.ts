@@ -1,6 +1,12 @@
-import { Country } from './country.model';
+import {Country} from './country.model';
 import {ApiProperty} from '@nestjs/swagger';
-import {Column, Entity, ManyToOne, PrimaryGeneratedColumn,JoinColumn} from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  JoinColumn,
+} from 'typeorm';
 
 @Entity()
 export class City {
@@ -12,12 +18,11 @@ export class City {
   @ApiProperty({required: true, type: 'string'})
   name: string;
 
-  @Column({ name: 'country_id' })
-  @ApiProperty({ required: true, format: 'uuid' })
+  @Column({name: 'country_id'})
+  @ApiProperty({required: true, format: 'uuid'})
   countryId: string;
 
-  @ManyToOne(() => Country, (country) => country.id)
-  @JoinColumn({ name: 'country_id' })
-  country: Country
-
+  @ManyToOne(() => Country, country => country.id)
+  @JoinColumn({name: 'country_id'})
+  country: Country;
 }

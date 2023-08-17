@@ -1,10 +1,10 @@
-import { Injectable } from '@nestjs/common';
-import { ProductCategory } from 'src/models';
-import { ProductCategoryRepository } from './product-category.repository';
+import {Injectable} from '@nestjs/common';
+import {ProductCategory} from 'src/models';
+import {ProductCategoryRepository} from './product-category.repository';
 
 @Injectable()
 export class ProductCategoryService {
-  constructor(private productCategoryRepository: ProductCategoryRepository) { }
+  constructor(private productCategoryRepository: ProductCategoryRepository) {}
   getAll(): Promise<ProductCategory[]> {
     return this.productCategoryRepository.orm.find();
   }
@@ -14,10 +14,10 @@ export class ProductCategoryService {
   }
 
   update(row: Partial<ProductCategory>, id: string) {
-    return this.productCategoryRepository.orm.update({ id: id }, row);
+    return this.productCategoryRepository.orm.update({id: id}, row);
   }
 
   delete(id: string) {
-    return this.productCategoryRepository.orm.delete({ id: id });
+    return this.productCategoryRepository.orm.delete({id: id});
   }
 }
