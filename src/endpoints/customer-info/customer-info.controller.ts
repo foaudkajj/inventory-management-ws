@@ -1,11 +1,11 @@
-import {Controller, Get, Post, Body, Put, Param, Delete} from '@nestjs/common';
-import {ApiParam} from '@nestjs/swagger';
-import {CustomerInfo} from 'src/models';
-import {CustomerInfoService} from './customer-info.service';
+import { Controller, Get, Post, Body, Put, Param, Delete } from '@nestjs/common';
+import { ApiParam } from '@nestjs/swagger';
+import { CustomerInfo } from 'src/models';
+import { CustomerInfoService } from './customer-info.service';
 
-@Controller('api/Customer_infos')
+@Controller('api/CustomersInfo')
 export class CustomerInfoController {
-  constructor(private readonly customerInfoService: CustomerInfoService) {}
+  constructor(private readonly customerInfoService: CustomerInfoService) { }
 
   @Get('get')
   getAll(): Promise<CustomerInfo[]> {
@@ -18,13 +18,13 @@ export class CustomerInfoController {
   }
 
   @Put('update/:id')
-  @ApiParam({name: 'id'})
+  @ApiParam({ name: 'id' })
   update(@Body() row: CustomerInfo, @Param('id') id: string) {
     return this.customerInfoService.update(row, id);
   }
 
   @Delete('delete/:id')
-  @ApiParam({name: 'id'})
+  @ApiParam({ name: 'id' })
   delete(@Param('id') id: string) {
     return this.customerInfoService.delete(id);
   }
