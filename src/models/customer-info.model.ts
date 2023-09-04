@@ -16,10 +16,6 @@ export class CustomerInfo {
   @ApiProperty({ required: false, type: 'string' })
   phone?: string;
 
-  @Column({ length: 50, name: 'accent_insensitive_name' })
-  @ApiProperty({ required: true, type: 'string' })
-  accentInsensitiveName: string;
-
   @Column({ length: 36, name: 'merchant_id' })
   merchantId: string
 

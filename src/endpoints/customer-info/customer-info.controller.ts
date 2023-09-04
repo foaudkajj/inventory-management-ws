@@ -28,4 +28,8 @@ export class CustomerInfoController {
   delete(@Param('id') id: string) {
     return this.customerInfoService.delete(id);
   }
+  @Get('getByMerchantId')
+  getByMerchantId(): Promise<CustomerInfo[]> {
+    return this.customerInfoService.getByMerchantId();
+  }
 }

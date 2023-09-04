@@ -25,4 +25,8 @@ export class CustomerInfoService {
   delete(id: string) {
     return this.customerInfoRepository.orm.delete({ id: id });
   }
+  getByMerchantId(): Promise<CustomerInfo[]> {
+    const merchantId = this.cls.get('user.merchantId')
+    return this.customerInfoRepository.orm.find({ where: { merchantId: merchantId } })
+  }
 }
