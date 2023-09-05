@@ -1,13 +1,10 @@
-import {Body, Controller, Post} from '@nestjs/common';
-import {SaleService} from 'src/endpoints/sale/sale.service';
-import {Sale, SalePaymentMethod, SaleProduct, SaleRequest} from 'src/models';
-import {ClsService} from 'nestjs-cls';
-import {v4 as uuidv4} from 'uuid';
-import {SaleProductService} from 'src/endpoints/sale-product/sale-product.service';
-import {ProductService} from 'src/endpoints/product/product.service';
-import {SalePaymentMethodService} from 'src/endpoints/sale-payment-method/sale-payment-method.service';
-import {PaymentMethodService} from 'src/endpoints/payment-method/payment-method.service';
-import {DataSource} from 'typeorm';
+import { Body, Controller, Post } from '@nestjs/common';
+import { Sale, SalePaymentMethod, SaleProduct, SaleRequest } from 'src/models';
+import { ClsService } from 'nestjs-cls';
+import { v4 as uuidv4 } from 'uuid';
+import { ProductService } from 'src/endpoints/product/product.service';
+import { PaymentMethodService } from 'src/endpoints/payment-method/payment-method.service';
+import { DataSource } from 'typeorm';
 
 @Controller('api/selling')
 export class SellingController {
@@ -16,7 +13,7 @@ export class SellingController {
     private readonly productService: ProductService,
     private readonly paymentMethodService: PaymentMethodService,
     public dataSource: DataSource,
-  ) {}
+  ) { }
 
   @Post('sellProducts')
   async sellProducts(@Body() saleRequest: SaleRequest) {
@@ -70,7 +67,7 @@ export class SellingController {
     }
     const sale = new Sale();
     sale.branchId = await this.cls.get('user.branchId');
-    sale.customerInfoId = 'cb79f4cb-fee4-4b9d-8721-74fc31946d73';
+    sale.customerInfoId = saleRequest.customerInfoId;
     sale.date = new Date(Date.now());
     sale.id = uuidv4();
     sale.merchantId = await this.cls.get('user.merchantId');
